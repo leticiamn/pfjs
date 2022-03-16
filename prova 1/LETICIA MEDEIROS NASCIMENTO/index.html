@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prova 1</title>
+    <script>
+      async function start() {
+        arquivo = document.getElementById("select").value;
+        json = await fetch(`${arquivo}.json`);
+        content = await json.json();
+
+        function slide() {
+          content.produtos.forEach((element, i) => {
+            setTimeout(() => {
+              document.getElementById("title").innerHTML = element.marca;
+
+              document.getElementById("info").innerHTML = element.modelo;
+
+              document.getElementById("price").innerHTML = element.valor;
+
+              document.getElementById("img").src = element.foto;
+            }, i * 1000);
+          });
+        }
+
+        interval = setInterval(slide, 3000);
+      }
+    </script>
+  </head>
+  <body onload="start()">
+    <h1>Promoção do dia</h1>
+    <h2 id="title"></h2>
+    <p id="info"></p>
+    <p id="price"></p>
+    <img
+      id="img"
+      width="200px"
+      height="200px"
+      src="please-wait.gif"
+      alt="Produto em promoção"
+    />
+    <br />
+    <br />
+    <select name="select" id="select" onclick="start()">
+      <option value="geladeiras">geladeiras</option>
+      <option value="smartphones">smartphones</option>
+    </select>
+  </body>
+</html>
