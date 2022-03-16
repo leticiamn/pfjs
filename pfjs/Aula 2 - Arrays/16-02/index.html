@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //vet = [0, 1, 2, 3, 4, 5, 6, 7];
+      /*function imprimir(vet) {
+                for(i = 0;i<vet.length;i++) {
+                    document.write(`${vet[i]} -> `);
+                }
+            }
+            imprimir(vet);*/
+
+      //****FUNÇÃO FOR EACH****
+      /*vet.forEach(imprimir);
+
+            function imprimir(valor) {
+                document.write(valor);
+            }*/
+
+      //********FOR EACH********
+      //vet.forEach(valor => document.write(valor));
+
+      //********EXERCÍCIO1*********
+      /*getNames = () => {
+                names = [];
+                total = prompt("Quantos nomes deseja ler?");
+                for (i=0;i<total;i++) names.push(prompt(`Nome ${i+1}:`));
+                return names;
+            }
+            printNames = (vet) => {
+                document.write('<ul>');
+
+                vet.forEach(name => document.write(`<li style="color:red">${name}</li>`));
+
+                /*for(i=0;i<vet.length;i++) {
+                    document.write('<li style="color:red">'+vet[i]+'</li>');
+                }*/
+      /*
+                     document.write('</ul>');
+                 }
+                 printNames(getNames());*/
+
+      //********EXERCÍCIO2*********
+      /*vet.forEach((name,i) => {if((parseInt(name) % 2) != 0)
+                document.write(`<li style="color:red">${i}</li>`)});*/
+
+      //********FUNÇÃO MAP********
+      //map RETORNA vetor e forEach não
+      /*vetMap = vet.map(valor => valor * 2);
+                document.write(vetMap);*/
+
+      //********EXERCÍCIO3*********
+      n = prompt("Quantos numeros irá inserir?");
+      vet = [];
+      for (i = 0; i < n; i++) vet.push(parseInt(prompt(`Numero ${i + 1}:`)));
+
+      /*console.log(
+          vet.map((element) => {
+            if (element % 2 == 0) element = element * 2;
+            else element = element * 3;
+            return element; //retorna o elemento alterado
+          })
+        );*/
+      vet = vet.map(
+        (element) => (element = element % 2 == 0 ? element * 2 : element * 3)
+      );
+
+      vet.forEach((element) => {
+        if (element >= 18) document.write(element);
+      });
+    </script>
+  </head>
+
+  <body></body>
+</html>
