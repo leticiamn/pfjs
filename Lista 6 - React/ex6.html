@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 6</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .box {
+        background-color: lightcoral;
+        border: 1px solid black;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <button onclick="renderBox()">Clique aqui</button>
+    <script type="text/babel">
+      var nome = prompt("Qual o nome?");
+      var altura = prompt("Qual altura?");
+      var largura = prompt("Qual largura?");
+      var esquerda = 0;
+      var topo = 0;
+
+      function random() {
+        esquerda = parseInt(
+          Math.random() * (document.documentElement.scrollWidth - largura)
+        );
+        topo = parseInt(
+          Math.random() * (document.documentElement.scrollHeight - altura)
+        );
+      }
+      function Box(props) {
+        return (
+          <div
+            className="box"
+            style={{
+              width: props.width + "px",
+              height: props.height + "px",
+              left: props.left + "px",
+              top: props.top + "px",
+            }}
+          >
+            {props.name}
+          </div>
+        );
+      }
+
+      function renderBox() {
+        random();
+        ReactDOM.render(
+          <Box
+            name={nome}
+            height={altura}
+            width={largura}
+            left={esquerda}
+            top={topo}
+          />,
+          document.getElementById("root")
+        );
+      }
+    </script>
+  </body>
+</html>

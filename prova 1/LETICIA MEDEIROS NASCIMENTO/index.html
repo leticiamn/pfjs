@@ -12,6 +12,7 @@
         content = await json.json();
 
         function slide() {
+          tamanho = content.produtos.length;
           content.produtos.forEach((element, i) => {
             setTimeout(() => {
               document.getElementById("title").innerHTML = element.marca;
@@ -25,7 +26,7 @@
           });
         }
         slide();
-        interval = setInterval(slide, 3000);
+        interval = setInterval(slide, tamanho * 1000);
       }
     </script>
   </head>
