@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 5</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .article {
+        width: 300px;
+        text-align: center;
+      }
+      .article img {
+        width: 200px;
+        height: 300px;
+      }
+      .article p {
+        color: blue;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Article extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { name: "", price: "", picture: "" };
+          this.getProducts = this.getProducts.bind(this);
+          this.renderProduct = { products: [] };
+          this.i = 0;
+        }
+        componentDidMount() {
+          this.getProducts();
+        }
+
+        getProducts() {
+          fetch("products.json")
+            .then((r) => r.json())
+            .then((r) => {
+              this.renderProduct = { products: r.products };
+            });
+        }
+        playTimer = () => {
+          if (this.i == this.renderProduct.products.length) {
+            this.i = 0;
+          }
+          this.setState({
+            name: this.renderProduct.products[this.i].name,
+            price: this.renderProduct.products[this.i].price,
+            picture: this.renderProduct.products[this.i].picture,
+          });
+          this.i++;
+        };
+        render() {
+          this.timer = setInterval(() => this.playTimer(), 1000);
+          return (
+            <div className="article">
+              <img src={this.state.picture} />
+              <h2>{this.state.name}</h2>
+              <p>{this.state.price}</p>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Article />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 3</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .table,
+      .table tr,
+      .table td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Jogadores extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { jogadores: [] };
+          this.getJogadores = this.getJogadores.bind(this);
+        }
+        componentDidMount() {
+          this.getJogadores();
+        }
+        getJogadores() {
+          fetch("jogadores.json")
+            .then((r) => r.json())
+            .then((r) => {
+              this.setState({ jogadores: r.jogadores });
+            });
+        }
+        render() {
+          return (
+            <table className="table">
+              {this.state.jogadores.map((element) => {
+                return (
+                  <tr>
+                    <td>{element.nome}</td>
+
+                    <td>{element.pontuacao}</td>
+                  </tr>
+                );
+              })}
+            </table>
+          );
+        }
+      }
+
+      ReactDOM.render(<Jogadores />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

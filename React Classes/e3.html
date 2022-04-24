@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .alert {
+        color: red;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      /*Estado e ciclo de vida em componente react
+      https://pt-br.reactjs.org/docs/state-and-lifecycle.html*/
+      class Teste extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            total: 0,
+            max: 30,
+          };
+        }
+        render() {
+          return (
+            <form>
+              Nome:{" "}
+              <input
+                type="text"
+                name=""
+                id=""
+                onChange={this.calcular}
+                maxLength={this.state.max}
+              />
+              <p>Número de caracteres: {this.state.max - this.state.total}</p>
+            </form>
+          );
+        }
+        calcular = () => {
+          this.setState({
+            total: event.target.value.length,
+          });
+          if (event.target.value.length == this.state.max)
+            alert("Limite de caracteres atendido!");
+        };
+      }
+      ReactDOM.render(<Teste />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

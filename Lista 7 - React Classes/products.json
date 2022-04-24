@@ -1,0 +1,17 @@
+{"products": [
+    {
+      "name": "Samsung Galaxy S21",
+      "price": "R$5.399,00",
+      "picture": "image1.jpg"
+    },
+    {
+        "name": "Samsung Galaxy S20",
+        "price": "R$4.399,00",
+        "picture": "image2.jpg"
+    },
+    {
+        "name": "iPhone 12",
+        "price": "R$6.399,00",
+        "picture": "image3.jpg"
+      }
+  ]}
