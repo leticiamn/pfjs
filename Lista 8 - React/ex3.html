@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 3</title>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Calculadora extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            value1: 0,
+            value2: 0,
+          };
+        }
+        render() {
+          return (
+            <div>
+              <h1>Calculadora</h1>
+              <form>
+                <input type="text" name="value1" onChange={this.setData} />
+                <br />
+                <input type="text" name="value2" onChange={this.setData} />
+                <br />
+                <input type="button" value="+" onClick={this.sum} />
+
+                <input type="button" value="-" onClick={this.sub} />
+
+                <input type="button" value="*" onClick={this.mult} />
+
+                <input type="button" value="/" onClick={this.div} />
+                <br />
+                <input type="text" name="sum" id="sum" />
+              </form>
+            </div>
+          );
+        }
+        setData = (event) => {
+          this.setState({
+            [event.target.name]: event.target.value,
+          });
+        };
+        sum = () => {
+          if (this.state.value1 == "" || this.state.value2 == "")
+            alert("Insira um número");
+          else
+            var sum = parseInt(this.state.value1) + parseInt(this.state.value2);
+          if (!sum) alert("Valores inválidos");
+          else document.getElementById("sum").value = sum;
+        };
+        sub = () => {
+          if (this.state.value1 == "" || this.state.value2 == "")
+            alert("Insira um número");
+          else
+            var sub = parseInt(this.state.value1) - parseInt(this.state.value2);
+          if (!sub) alert("Valores inválidos");
+          else document.getElementById("sum").value = sub;
+        };
+        mult = () => {
+          if (this.state.value1 == "" || this.state.value2 == "")
+            alert("Insira um número");
+          else
+            var mult =
+              parseFloat(this.state.value1) * parseFloat(this.state.value2);
+          if (!mult) alert("Valores inválidos");
+          else document.getElementById("sum").value = mult;
+        };
+        div = () => {
+          if (this.state.value1 == "" || this.state.value2 == "")
+            alert("Insira um número");
+          else
+            var div =
+              parseFloat(this.state.value1) / parseFloat(this.state.value2);
+          if (!div) alert("Valores inválidos");
+          else document.getElementById("sum").value = div;
+        };
+      }
+
+      ReactDOM.render(<Calculadora />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
