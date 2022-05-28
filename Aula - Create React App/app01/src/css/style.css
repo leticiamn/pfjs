@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&family=Oswald&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: 'Oswald', sans-serif;
+}
+
+header {
+    background-color: black;
+    padding: 20px;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    font-size: 45px;
+}
+
+.container {
+    width: 1200px;
+    margin: auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+.boxChamada img {
+    height: 260px;
+}
+
+.boxChamada h2 {
+    font-size: 30px;
+}
+
+.boxChamada h3 {
+    color: darkred;
+}
+
+.boxChamada p {
+    margin: 15px 0;
+    text-align: justify;
+}
+
+.boxChamada > div {
+    padding: 15px;
+}
+
+.boxChamada div:nth-child(1) {
+    text-align: center;
+}
+
+main section:nth-child(even) {
+    background-color: lightgrey;
+}
