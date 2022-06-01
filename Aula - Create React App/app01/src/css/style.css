@@ -6,7 +6,7 @@
     font-family: 'Oswald', sans-serif;
 }
 
-header {
+header, footer {
     background-color: black;
     padding: 20px;
 }
@@ -16,6 +16,8 @@ header h1 {
     text-align: center;
     font-size: 45px;
 }
+
+
 
 .container {
     width: 1200px;
@@ -53,4 +55,21 @@ img {
 
 main section:nth-child(even) {
     background-color: lightgrey;
+}
+
+.depoimentos img {
+    height:200px;
+    width:200px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.depoimentos {
+    padding: 25px;
+    margin: auto;
+}
+
+footer h4 {
+    color: white;
+    text-align: center;
 }
